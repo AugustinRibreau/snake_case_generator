@@ -10,7 +10,7 @@
 
 > snake_case generator
 
-### 🏠 [Homepage](https://github.com/AugustinRibreau/snake_case_generator)
+### 🏠 [Homepage](https://snake-case.netlify.app/)
 
 ## Install
 
