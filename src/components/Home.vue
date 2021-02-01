@@ -1,8 +1,9 @@
 <template>
   <div class="home">
-    <label for="userText">snake_case_generator</label>
+    <label for="userText">variable refactoring</label>
     <textarea name="userText" id="userText" cols="30" rows="10" v-on:change="changeItem($event)"></textarea>
-    <p class="renderValue">{{title}}</p>
+    <p class="renderValue">snake_case : {{snake}}</p>
+    <p class="renderValue">camelCase : {{camel}}</p>
     <div class="footer">© 2021 - <a href="https://augustinribreau.com" target="_blank">Augustin Ribreau</a></div>
   </div>
 </template>
@@ -10,7 +11,10 @@
 <script>
 export default {
   name: 'Home',
-  props: { title : String},
+  props: {
+    snake : String,
+    camel : String
+  },
 
   methods: {
     changeItem: function changeItem(event) {
@@ -19,7 +23,6 @@ export default {
         "nos", "de", "votre", "vos" , "leur", "leurs", "le", "la", "les", "des",
         "ces", "'", "/", ",", '"', "`", ")", "(", "&", "§", "!","ç","^", "¨", "$",
         "*","£", "@", "€", "ù", "%", "=", "+", ":", ";", ".", "?", 'the', "i'm"
-
       ];
       const userValue = event.target.value;
       const _userValues = userValue.split(' ');
@@ -28,7 +31,21 @@ export default {
           _userValues.splice(_userValues.indexOf(value), 1);
         }
       });
-      this.title =  _userValues.join('_').split("'").join('_');
+      this.snake = _userValues.join('_').split("'").join('_');
+
+      function strUcFirst(elem){
+        return (elem+'').charAt(0).toUpperCase()+elem.substr(1);
+      }
+
+      const camelCaseValues = [];
+      _userValues.map((value, index) =>{
+        if (index !== 0){
+          camelCaseValues.push(strUcFirst(value));
+        }else{
+          camelCaseValues.push(value);
+        }
+      })
+      this.camel = camelCaseValues.join('');
     }
   }
 }
