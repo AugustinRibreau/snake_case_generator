@@ -10,7 +10,7 @@
 
 > variable refactoring
 
-### 🏠 [Homepage](https://snake-case.netlify.app/)
+### 🏠 [Homepage](https://variable-refactoring.netlify.app)
 
 ## Install
 
