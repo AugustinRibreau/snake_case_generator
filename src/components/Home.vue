@@ -18,27 +18,27 @@ export default {
 
   methods: {
     changeItem: function changeItem(event) {
-      const _determinant = [
+      const _noWords = [
         "mon", "ma", "mes", "ton", "ta", "tes", "son", "sa", "ses", "notre",
         "nos", "de", "votre", "vos" , "leur", "leurs", "le", "la", "les", "des",
         "ces", "'", "/", ",", '"', "`", ")", "(", "&", "§", "!","ç","^", "¨", "$",
-        "*","£", "@", "€", "ù", "%", "=", "+", ":", ";", ".", "?", 'the', "i'm"
+        "*","£", "@", "€", "ù", "%", "=", "+", ":", ";", ".", "?", 'the', "i'm", "this", "my"
       ];
-      const userValue = event.target.value;
-      const _userValues = userValue.split(' ');
-      _userValues.filter(value => {
-        if (_determinant.includes(value)){
-          _userValues.splice(_userValues.indexOf(value), 1);
+      const targetValue = event.target.value;
+      const values = targetValue.split(' ');
+      values.filter(value => {
+        if (_noWords.includes(value)){
+          values.splice(values.indexOf(value), 1);
         }
       });
-      this.snake = _userValues.join('_').split("'").join('_');
+      this.snake = values.join('_').split("'").join('_');
 
       function strUcFirst(elem){
         return (elem+'').charAt(0).toUpperCase()+elem.substr(1);
       }
 
       const camelCaseValues = [];
-      _userValues.map((value, index) =>{
+      values.map((value, index) =>{
         if (index !== 0){
           camelCaseValues.push(strUcFirst(value));
         }else{
